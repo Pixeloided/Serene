@@ -10,7 +10,7 @@
     <dl>
         <dt class="h3 font-semibold">1. Content</dt>
         <dd>
-            <p>The Service allows you to read or view curated uploaded content. This content is provided for entertainment purposes only and does not constitute professional advice. We do not guarantee the accuracy, completeness, or usefulness of any content on the Service.</p>
+            <p>The Service allows you to read or view uploaded content. This content is provided for entertainment purposes only and does not constitute professional advice. We do not guarantee the accuracy, completeness, or usefulness of any content on the Service.</p>
             <p>You are solely responsible for your use of any content on the Service. We are not responsible for any loss or damage resulting from your reliance on any content on the Service.</p>
             <p>All content is fictive in nature unless explicitly noted. Names, characters, locations, and incidents are either the product of the author's imagination or are used fictitiously, and any resemblance to actual persons, living or dead, businesses, companies, events, or locales is entirely coincidental. </p>
         </dd>
@@ -20,7 +20,7 @@
             <p>You agree not to use the Service to:</p>
             <ol class="list space-y-2 ml-5">
                 <li>
-                    <span class="mr-5">a)</span>Upload, post, or transmit any content that is illegal, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, racially, ethnically, or otherwise offensive.
+                    <span class="mr-5">a)</span>Upload, post, or transmit any content that is illegal, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, or otherwise offensive.
                 </li>
                 <li>
                     <span class="mr-5">b)</span>Impersonate any person or entity, or falsely state or otherwise misrepresent your affiliation with a person or entity.
@@ -66,7 +66,7 @@
                         <span class="mr-5">i.</span>You retain all ownership rights to the content you upload to the Service ("User Content").
                     </li>
                     <li>
-                        <span class="mr-5">ii.</span>By uploading User Content, you agree to grant us a limited, non-transferable, non-commercial, royalty-free, worldwide, prepetual license to reproduce, distribute, publish, and display your User Content solely for the purpose of providing and improving the Service.
+                        <span class="mr-5">ii.</span>By uploading User Content, you agree to grant us, unless revoked as defined in section 4(d), a limited, non-transferable, non-commercial, royalty-free, worldwide, prepetual license to reproduce, distribute, publish, and display your User Content solely for the purpose of providing, improving, marketing or advertising the Service.
                     </li>
                     <li>
                         <span class="mr-5">iii.</span>This license is granted for the duration of your User Content's presence on the Service.
@@ -81,10 +81,19 @@
                         <span class="mr-5">vi.</span>You agree not to upload User Content that infringes any third party's intellectual property rights, privacy rights, publicity rights, or other personal or proprietary rights.
                     </li>
                     <li>
-                        <span class="mr-5">vii.</span>You agree not to upload User Content that is illegal, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, racially, ethnically, or otherwise offensive.
+                        <span class="mr-5">vii.</span>You agree not to upload User Content that is illegal, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, or otherwise offensive.
                     </li>
                     <li>
-                        <span class="mr-5">viii.</span>You agree that we may remove or disable access to any User Content at any time for any reason or no reason, including User Content that we believe violates these Terms.
+                        <span class="mr-5">viii.</span>You agree that we may remove or disable access to any User Content at any time for any reason or no reason, including User Content that we believe violates these Terms, as described in section 4(c).
+                    </li>
+                    <li>
+                        <span class="mr-5">ix.</span>You agree to indemnify and hold us harmless from any and all claims, demands, damages, losses, liabilities, and expenses (including attorneys' fees) arising from or related to your User Content, including but not limited to any claims of infringement of intellectual property rights or other proprietary rights.
+                    </li>
+                    <li>
+                        <span class="mr-5">x.</span>You agree to cooperate with us in the defense of any such claims.
+                    </li>
+                    <li>
+                        <span class="mr-5">xi.</span>You agree that, in the event of a modification, change, or replacement of these terms or license agreement as defined in 4(a)(ii), or modification of the service, as defined in section 7, User Content uploaded prior to the effective date of the modification, will be subject to the new terms and license agreement, unless the uploader wholly revokes the granted license as defined in section 4(d).
                     </li>
                 </ol>
                 <dt>b) For Accessors ("Users"):</dt>
@@ -99,7 +108,7 @@
                 <dt>c) General:</dt>
                 <ol class="list space-y-2 ml-5">
                     <li>
-                        <span class="mr-5">i.</span>We reserve the right to remove User Content from the Service at any time and for any reason, including but not limited to, User Content that violates these Terms or that we otherwise deem inappropriate.
+                        <span class="mr-5">i.</span>We reserve the right to remove User Content from the Service at any time and for any reason, including but not limited to, User Content that violates these Terms or that we otherwise deem inappropriate. If the content is removed due to a violation of these Terms, the removal will not be classified as a License Revocation as defined in section 4(d), and we retain all licensing rights to the removed content as defined in section 4(a)(ii).
                     </li>
                     <li>
                         <span class="mr-5">ii.</span>We reserve the right to terminate or suspend your access to the Service at any time and for any reason, including but not limited to, your violation of these Terms.
@@ -108,6 +117,10 @@
                         <span class="mr-5">iii.</span>We are not responsible for any loss or damage resulting from the removal of User Content.
                     </li>
                 </ol>
+                <dt>d) License Revocation:</dt>
+                <dd>
+                    <p class="ml-5">You may revoke the license granted in section 4(a)(ii) by deleting your User Content from the Service, or by contacting us with a deletion request. However, you acknowledge that we may retain archived copies of your User Content for a period of time consistent with our backup, archival, and/or audit processes. We may also retain User Content to the extent required by law or for legitimate business purposes.</p>
+                </dd>
             </dl>
         </dd>
         <br />
