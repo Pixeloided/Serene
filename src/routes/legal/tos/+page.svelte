@@ -1,6 +1,6 @@
 <div class="m-5 md:w-1/2">
     <h2 class="h2 font-semibold">Terms of Service</h2>
-    <blockquote class="blockquote"><span class="font-semibold">Effective Date:</span> March 18, 2024</blockquote>
+    <blockquote class="blockquote"><span class="font-semibold">Effective Date:</span> March 20, 2024</blockquote>
     <br />
     <p>These Terms of Service ("Terms") govern your access to and use of the https://serendipityscheme.com website and the https://ssce.me shorthand URL (the "Service") operated by The Serendipity Scheme ("us", "we", or "our").</p>
     <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
@@ -94,6 +94,9 @@
                     </li>
                     <li>
                         <span class="mr-5">xi.</span>You agree that, in the event of a modification, change, or replacement of these terms or license agreement as defined in 4(a)(ii), or modification of the service, as defined in section 7, User Content uploaded prior to the effective date of the modification, will be subject to the new terms and license agreement, unless the uploader wholly revokes the granted license as defined in section 4(d).
+                    </li>
+                    <li>
+                        <span class="mr-5">xii.</span>You ackgnowledge that you are entirely forbidden from posting any content that was generated, in whole or in part, by any "AI" model or algorithm. You also acknowledge that if you upload such content, your access to the service will be fully terminated, and you will be forbidden from using the service. Any granted licenses will be revoked as a violation of these terms as specified under 4(c)(i).
                     </li>
                 </ol>
                 <dt>b) For Accessors ("Users"):</dt>
