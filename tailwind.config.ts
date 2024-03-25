@@ -1,5 +1,6 @@
 import { join } from 'path';
 import type { Config } from 'tailwindcss';
+import forms from '@tailwindcss/forms';
 
 import { serendipityTheme } from './SerendipityTheme';
 
@@ -22,15 +23,17 @@ const config = {
 			},
 			colors: {
 				soft: '#f6e7dc'
-			}
-		}
+			},
+			
+		},
 	},
 	plugins: [
 		skeleton({
 			themes: {
 				custom: [serendipityTheme]
 			}
-		})
+		}),
+		forms
 	]
 } satisfies Config;
 
