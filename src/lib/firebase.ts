@@ -8,7 +8,7 @@ import { env } from "$env/dynamic/private";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 export const firebaseConfig = {
-  apiKey: env.PRIVATE_FIREBASE_API_KEY,
+  apiKey: process.env.PRIVATE_FIREBASE_API_KEY,
   authDomain: "serendipity-scheme.firebaseapp.com",
   projectId: "serendipity-scheme",
   storageBucket: "serendipity-scheme.appspot.com",

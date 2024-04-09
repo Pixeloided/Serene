@@ -24,7 +24,18 @@ const config = {
 			colors: {
 				soft: '#f6e7dc'
 			},
-			
+			backgroundImage: {
+				'radial-red': 'radial-gradient(circle, rgba(255,78,78,1) 0%, rgba(255,152,152,1) 100%);',
+				'radial-transparent': 'radial-gradient(circle, transparent 75%, rgba(255,152,152,1) 100%);',
+				'star': 'url("/icons/star.svg")'
+			},
+			minWidth: {
+				'1200': '1200px',
+				'2000': '2000px'
+			},
+			backgroundSize: {
+				'10': '10%'
+			}
 		},
 	},
 	plugins: [
