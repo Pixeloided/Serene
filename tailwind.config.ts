@@ -22,11 +22,16 @@ const config = {
 				ArchivoBlack: ['Archivo Black', 'sans-serif']
 			},
 			colors: {
-				soft: '#f6e7dc'
+				soft: '#f6e7dc',
+				'ss-purple': '#8C1C85',
+				'ss-teal': '#84BFAE',
+				'ss-beige': '#D9CCB4',
+				'ss-orange': '#F2955E',
+				'ss-red': '#BF6565'
 			},
 			backgroundImage: {
-				'radial-red': 'radial-gradient(circle, rgba(255,78,78,1) 0%, rgba(255,152,152,1) 100%);',
-				'radial-transparent': 'radial-gradient(circle, transparent 75%, rgba(255,152,152,1) 100%);',
+				'radial-purple': 'radial-gradient(circle, #5ebfa3 0%, #84BFAE 100%);',
+				'radial-transparent': 'radial-gradient(circle, transparent 75%, #84BFAE 100%);',
 				'star': 'url("/icons/star.svg")'
 			},
 			minWidth: {
@@ -35,8 +40,8 @@ const config = {
 			},
 			backgroundSize: {
 				'10': '10%'
-			}
-		},
+			},
+		}
 	},
 	plugins: [
 		skeleton({
