@@ -31,7 +31,7 @@
 </AppShell>
 <style>
 	:global(*::selection) {
-		color: white;
-		background: blue;
+		color: #fff;
+		background: #84BFAE;
 	}
 </style>

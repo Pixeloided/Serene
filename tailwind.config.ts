@@ -44,12 +44,8 @@ const config = {
 		}
 	},
 	plugins: [
-		skeleton({
-			themes: {
-				custom: [serendipityTheme]
-			}
-		}),
-		forms
+		forms,
+		skeleton
 	]
 } satisfies Config;
 

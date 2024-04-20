@@ -1,37 +1,26 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    let bubbles: HTMLCollection | undefined;
     let xPoses: number[] = [0, 0, 0, 0, 0];
-
-    onMount(() => {
-       bubbles = document.getElementById("bubbles")?.children; 
-    });
 
     const domousemove = (e: MouseEvent) => {
         const x = e.clientX;
         const dx = -(Math.max(window.innerWidth, x) - Math.min(window.innerWidth, x)) / 10;
-        xPoses = [
-            dx * 0.2 * (window.innerWidth / 1024),
-            dx * 0.4 * (window.innerWidth / 1024),
-            dx * 0.6 * (window.innerWidth / 1024),
-            dx * 0.8 * (window.innerWidth / 1024),
-            dx * (window.innerWidth / 1024)
-        ]
+        const w = window.innerWidth / 1024
+        xPoses = [dx * 0.2 * w, dx * 0.4 * w, dx * 0.6 * w, dx * 0.8 * w, dx * w]
     }
 </script>
 <svelte:window on:mousemove={domousemove} />
 <div class="relative h-svh scroll-smooth" on:mousemove={onmousemove} role="document">
     <div class="w-full h-full">
         <div class="w-full h-5/6 -mb-5 relative bg-radial-purple" id="title">
-            <div class="bg-star absolute left-1/2 top-0 -translate-x-1/2 z-10 h-full w-full min-w-1200 opacity-10 bg-10 panner starhue"></div>
-            <div class="bg-radial-transparent absolute left-0 top-0 w-full h-full opacity-90 z-20"></div>
+            <div class="bg-star absolute left-1/2 top-0 -translate-x-1/2 z-10 h-full w-full min-w-1200 opacity-10 bg-10 panner starhue" />
+            <div class="bg-radial-transparent absolute left-0 top-0 w-full h-full opacity-90 z-20" />
             <h1 class="h1 z-30 text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold scale-150 text-center">The Serendipity Scheme</h1>
         </div>
         <div class="absolute z-30 left-1/2 -translate-x-1/2 h-1/6 w-full min-w-2000 clippy clippy-shadow stripes hidden md:block" id="nav">
             <div class="text-center h-full w-full flex items-center justify-center flex-wrap">
-                <a href="#mission" class="anchor h3 mr-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Our Mission</a><span> | </span>
-                <a href="#about" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">About Us</a><span> | </span>
-                <a href="/submission-guide" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Submit Your Work</a><span> | </span>
+                <a href="#mission" class="anchor h3 mr-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Our Mission</a><span class="select-none"> | </span>
+                <a href="#about" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">About Us</a><span class="select-none"> | </span>
+                <a href="/submission-guide" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Submit Your Work</a><span class="select-none"> | </span>
                 <a href="/p/random" class="anchor h3 text-ss-teal ml-2 hover:text-ss-teal/70 hover:rotate-2 hover:no-underline transition-all">View a Random Work</a>
             </div>
         </div>
@@ -55,31 +44,68 @@
     <div id="body" class="-translate-y-15 md:translate-y-0">
         <div class="translate-y-32 md:translate-y-0">
             <div id="bubbles" class="h-full w-full absolute p-0 justify-end hidden lg:flex flex-row flex-nowrap">
-                <div class="bubble-4 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-4" style="translate: {xPoses[4]}px"></div>
-                <div class="bubble-3 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-3" style="translate: {xPoses[3]}px"></div>
-                <div class="bubble-2 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-2" style="translate: {xPoses[2]}px"></div>
-                <div class="bubble-1 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-1" style="translate: {xPoses[1]}px"></div>
-                <div class="bubble-0 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-0" style="translate: {xPoses[0]}px"></div>
+                <div class="bubble-4 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-4" style="translate: {xPoses[4]}px" />
+                <div class="bubble-3 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-3" style="translate: {xPoses[3]}px" />
+                <div class="bubble-2 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-2" style="translate: {xPoses[2]}px" />
+                <div class="bubble-1 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-1" style="translate: {xPoses[1]}px" />
+                <div class="bubble-0 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-0" style="translate: {xPoses[0]}px" />
             </div>
             <div id="mission" class="w-full mb-8 relative left-1/2 -translate-x-1/2 z-40 text-slate-800">
-                <h2 class="h2 font-semibold ml-4 md:hover:tracking-wider transition-all">Our <span class="text-ss-teal italic">Mission</span></h2>
+                <h2 class="h2 font-semibold ml-4 transition-all">Our <span class="text-ss-teal italic">Mission</span></h2>
                 <hr class="w-1/4 ml-6 my-4 text-slate-400" />
                 <p class="w-full md:w-1/2 ml-4 text-lg">
                     <span class="italic md:hover:text-pink-600 transition-all">The Serendipity Scheme</span> was dreamed up to provide Whatcom County teens with an accessible, stress-free way to promote their creativity. By uploading their art and writing on our website and distributing QR codes linked to it, young artists and writers have the opportunity to engage with the broader community and receive recognition and support back from it. As creatives ourselves, we understand how daunting sharing your voice with the world can be, but we also know that the only way to gain confidence and improve our craft is by taking that first step out into the world! Our mission is to cultivate a simple, and serendipitous platform that highlights teen imagination, offers an inspiring surprise to anyone who stumbles upon us, and makes Whatcom County just a little bit brighter. 
                 </p>
             </div>
             <div id="about" class="w-full mb-8 relative left-1/2 -translate-x-1/2 z-40 text-slate-800">
-                <h2 class="h2 font-semibold ml-4 md:hover:tracking-wider transition-all">About <span class="text-ss-teal italic">Us</span></h2>
+                <h2 class="h2 font-semibold ml-4 transition-all">About <span class="text-ss-teal italic">Us</span></h2>
                 <hr class="w-1/4 ml-6 my-4 text-slate-400" />
-                <p class="w-full md:w-1/2 ml-4 text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, quas! Ducimus nobis explicabo assumenda? Recusandae repellat fugit natus. Pariatur nobis ipsa corrupti, dicta architecto voluptatibus fuga facilis expedita aut facere!
-                    Aperiam ab repellendus obcaecati assumenda error laboriosam saepe ut officiis nostrum culpa dignissimos nihil molestiae incidunt libero minima commodi, accusamus tempora. Atque fugiat nihil corrupti odit suscipit quidem. Ex, eos.
-                    Nostrum mollitia sint error, adipisci minima labore nihil vero ex ratione eos saepe cum harum hic ducimus necessitatibus consectetur sunt eius pariatur cumque at dolorem aut maxime! Dolorum, nobis distinctio.
-                </p>
+                <div class="flex my-6 ml-6">
+                    <img src="/img/ella.webp" alt="headshot of a person" class="w-20 h-20 rounded-full border-ss-teal border-2 shadow-lg pointer-events-none" id="ella"/>
+                    <ul class="ml-4 w-full">
+                        <li>
+                            <h4 class="h4 font-bold text-ss-teal">Ella Prichard</h4>
+                        </li>
+                        <li>
+                            <p class="w-full md:w-1/2 text-lg">
+                                the person who does the things occasionally
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex my-6">
+                    <img src="/img/maya.webp" alt="headshot of a person" class="w-20 h-20 rounded-full ml-6 border-ss-teal border-2 pointer-events-none" id="maya"/>
+                    <ul class="ml-4 w-full">
+                        <li>
+                            <h4 class="h4 font-bold text-ss-teal">Maya Dam</h4>
+                        </li>
+                        <li>
+                            <p class="w-full md:w-1/2 text-lg">
+                                art the art
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex">
+                    <img src="/img/robbie.webp" alt="headshot of a person" class="w-20 h-20 rounded-full ml-6 border-ss-teal border-2 pointer-events-none" id="robbie"/>
+                    <ul class="ml-4 w-full">
+                        <li>
+                            <a href="/img/vro.webp" target="_blank"><h4 class="h4 font-bold text-ss-teal">Robbie Henkel</h4></a>
+                        </li>
+                        <li>
+                            <p class="hidden">hey, you found the easter egg! good on ya. here, have some cake 🍰</p>
+                            <p class="w-full md:w-1/2 text-lg">
+                                [insert yapping here].
+                                You can find me at <a href="https://rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple" target="_blank">https://rhenkel.me</a> or contact me at <a href="mailto:contact@rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple">contact@rhenkel.me</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="w-full h-1/6 relative left-1/2 -translate-x-1/2 z-40 text-slate-800 stripes footer clippy">
+    <div class="h-1/6 md:hidden my-2" />
+    <div class="w-full h-1/6 relative left-1/2 -translate-x-1/2 z-40 text-slate-800 stripes footer">
         <div class="text-center h-full w-full flex items-center justify-center flex-wrap">
             <ul>
                 <li>
@@ -103,25 +129,50 @@
         filter: drop-shadow(3px 3px 3px black);
     }
     h2 {
-        filter: drop-shadow(2px 2px 3px black);
+        filter: drop-shadow(1px 1px 1px black);
+    }
+    h4 {
+        filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.75));
+    }
+    #ella {
+        filter: drop-shadow(-3px 3px 3px teal);
+    }
+    #robbie {
+        filter: drop-shadow(3px 3px 3px teal);
+    }
+    #maya {
+        filter: drop-shadow(0px 3px 3px teal);
     }
     .bubble-0 {
+        /* transition: all 0.2s ease-out; */
+        transition: all 1s ease-out;
+        animation: bounce 4s ease-in-out infinite;
         background-image: url("/img/wave-layer-0.svg");
     }
     .bubble-1 {
+        /* transition: all 0.4s ease-out; */
+        transition: all 0.8s ease-out;
+        animation: bounce 5s ease-in-out infinite;
         background-image: url("/img/wave-layer-1.svg");
     }
     .bubble-2 {
+        transition: all 0.6s ease-out;
+        animation: bounce 6s ease-in-out infinite;
         background-image: url("/img/wave-layer-2.svg");
     }
     .bubble-3 {
+        /* transition: all 0.8s ease-out; */
+        transition: all 0.4s ease-out;
+        animation: bounce 7s ease-in-out infinite;
         background-image: url("/img/wave-layer-3.svg");
     }
     .bubble-4 {
+        /* transition: all 1s ease-out; */
+        transition: all 0.2s ease-out;
+        animation: bounce 8s ease-in-out infinite;
         background-image: url("/img/wave-layer-4.svg");
     }
     .starhue {
-        /* filter: brightness(0) saturate(100%) invert(76%) sepia(29%) saturate(1569%) hue-rotate(318deg) brightness(100%) contrast(91%); */
         filter: brightness(0) saturate(100%) invert(14%) sepia(66%) saturate(4562%) hue-rotate(293deg) brightness(86%) contrast(89%);
     }
     @media(prefers-reduced-motion) {
@@ -138,6 +189,17 @@
         }
         100% {
             background-position: 100% 0%;
+        }
+    }
+    @keyframes bounce {
+        0% {
+            margin-top: 20px;
+        }
+        50% {
+            margin-top: -20px;
+        }
+        100% {
+            margin-top: 20px;
         }
     }
     .panner {
