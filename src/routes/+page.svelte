@@ -11,7 +11,7 @@
 <svelte:window on:mousemove={domousemove} />
 <div class="relative h-svh scroll-smooth" on:mousemove={onmousemove} role="document">
     <div class="w-full h-full">
-        <div class="w-full h-5/6 -mb-5 relative bg-radial-purple" id="title">
+        <div class="w-full h-5/6 -mb-5 relative bg-radial-purple z-20" id="title">
             <div class="bg-star absolute left-1/2 top-0 -translate-x-1/2 z-10 h-full w-full min-w-1200 opacity-10 bg-10 panner starhue" />
             <div class="bg-radial-transparent absolute left-0 top-0 w-full h-full opacity-90 z-20" />
             <h1 class="h1 z-30 text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold scale-150 text-center">The Serendipity Scheme</h1>
@@ -43,7 +43,7 @@
     </div>
     <div id="body" class="-translate-y-15 md:translate-y-0">
         <div class="translate-y-32 md:translate-y-0">
-            <div id="bubbles" class="h-full w-full absolute p-0 justify-end hidden lg:flex flex-row flex-nowrap">
+            <div id="bubbles" class="h-full w-full absolute p-0 justify-end hidden lg:flex flex-row flex-nowrap z-10">
                 <div class="bubble-4 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-4" style="translate: {xPoses[4]}px" />
                 <div class="bubble-3 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-3" style="translate: {xPoses[3]}px" />
                 <div class="bubble-2 w-full h-full bg-no-repeat mr-10 absolute bg-right scale-125" id="bubble-2" style="translate: {xPoses[2]}px" />
@@ -65,10 +65,12 @@
                     <ul class="ml-4 w-full">
                         <li>
                             <h4 class="h4 font-bold text-ss-teal">Ella Prichard</h4>
+                            <h6 class="h6 italic text-slate-700">Director</h6>
                         </li>
                         <li>
                             <p class="w-full md:w-1/2 text-lg">
-                                the person who does the things occasionally
+                                Hello there! My name is Ella Prichard and I'm the founder and director of The Serendipity Scheme. I'm a teen speculative fiction author who loves time travel stories, studying history, and caramel cake. I created The Serendipity Scheme as a way to help fellow creative teens bring their work to life, and to cultivate a greater presence of art and writing throughout Whatcom County. I'm so glad you stumbled upon us, and I hope you enjoy your stay! 
+                                <a class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple" href="mailto:ella@serendipityscheme.com">ella@serendipityscheme.com</a>
                             </p>
                         </li>
                     </ul>
@@ -78,15 +80,17 @@
                     <ul class="ml-4 w-full">
                         <li>
                             <h4 class="h4 font-bold text-ss-teal">Maya Dam</h4>
+                            <h6 class="h6 italic text-slate-700">Art Curator</h6>
                         </li>
                         <li>
                             <p class="w-full md:w-1/2 text-lg">
-                                art the art
+                                Hi, I’m Maya! I’m a teen artist who specializes in traditional art and I especially love watercolor and printmaking. My favorite thing about art is that it can turn your imagination into reality. You can follow my art journey <a href="https://instagram.com/lejingmun" target="_blank" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple">@lejingmun</a><br />
+                                I look forward to seeing your art :)
                             </p>
                         </li>
                     </ul>
                 </div>
-                <div class="flex">
+                <!-- <div class="flex">
                     <img src="/img/robbie.webp" alt="headshot of a person" class="w-20 h-20 rounded-full ml-6 border-ss-teal border-2 pointer-events-none" id="robbie"/>
                     <ul class="ml-4 w-full">
                         <li>
@@ -95,12 +99,12 @@
                         <li>
                             <p class="hidden">hey, you found the easter egg! good on ya. here, have some cake 🍰</p>
                             <p class="w-full md:w-1/2 text-lg">
-                                [insert yapping here].
+                                Dream guest on my podcast? Whoever made the sure SM7-B.
                                 You can find me at <a href="https://rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple" target="_blank">https://rhenkel.me</a> or contact me at <a href="mailto:contact@rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple">contact@rhenkel.me</a>
                             </p>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -109,10 +113,13 @@
         <div class="text-center h-full w-full flex items-center justify-center flex-wrap">
             <ul>
                 <li>
-                    <p>© 2024 The Serendipity Scheme, All Rights Reserved.</p>
+                    <p>© Copyright Notice</p>
                 </li>
                 <li>
                     <a href="/legal/privacy" class="anchor hover:no-underline">Privacy Policy</a> | <a href="/legal/tos" class="anchor hover:no-underline">Terms of Service</a>
+                </li>
+                <li>
+                    <p>Made with <span class="text-red-500 heartbeat absolute">♥</span><span class="mx-2"></span>by <a href="https://rhenkel.me" class="anchor hover:no-underline" target="_blank">Robert Henkel</a>. Reach out at <a href="mailto:contact@rhenkel.me" class="anchor hover:no-underline">contact@rhenkel.me</a>.</p>
                 </li>
             </ul>
         </div>
@@ -137,9 +144,9 @@
     #ella {
         filter: drop-shadow(-3px 3px 3px teal);
     }
-    #robbie {
+    /* #robbie {
         filter: drop-shadow(3px 3px 3px teal);
-    }
+    } */
     #maya {
         filter: drop-shadow(0px 3px 3px teal);
     }
@@ -201,6 +208,20 @@
         100% {
             margin-top: 20px;
         }
+    }
+    @keyframes heartbeater {
+        0% {
+            font-size: 1rem;
+        }
+        50% {
+            font-size: 1.25rem;
+        }
+        100% {
+            font-size: 1rem;
+        }
+    }
+    .heartbeat {
+        animation: heartbeater 1s ease-in-out infinite;
     }
     .panner {
         animation: panna_cotta 90s linear infinite;
