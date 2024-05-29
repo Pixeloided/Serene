@@ -1,42 +1,44 @@
 <script lang="ts">
     let xPoses: number[] = [0, 0, 0, 0, 0];
+    const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) as any === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
-    const domousemove = (e: MouseEvent) => {
-        const x = e.clientX;
-        const dx = -(Math.max(window.innerWidth, x) - Math.min(window.innerWidth, x)) / 10;
-        const w = window.innerWidth / 1024
-        xPoses = [dx * 0.2 * w, dx * 0.4 * w, dx * 0.6 * w, dx * 0.8 * w, dx * w]
+    const doWaveAnimation = (e: MouseEvent) => {
+        if (!isReduced) {
+            const x = e.clientX;
+            const w = (-(Math.max(window.innerWidth, x) - Math.min(window.innerWidth, x)) / 10) * (window.innerWidth / 1024);
+            xPoses = [0.2 * w, 0.4 * w, 0.6 * w, 0.8 * w, w]
+        }
     }
 </script>
-<svelte:window on:mousemove={domousemove} />
-<div class="relative h-svh scroll-smooth" on:mousemove={onmousemove} role="document">
+<svelte:window on:mousemove={doWaveAnimation} />
+<div class="relative h-svh scroll-smooth" role="document">
     <div class="w-full h-full">
         <div class="w-full h-5/6 -mb-5 relative bg-radial-purple z-20" id="title">
             <div class="bg-star absolute left-1/2 top-0 -translate-x-1/2 z-10 h-full w-full min-w-1200 opacity-10 bg-10 panner starhue" />
-            <div class="bg-radial-transparent absolute left-0 top-0 w-full h-full opacity-90 z-20" />
+            <div class="bg-radial-transparent absolute left-0 top-0 w-full h-full z-20" />
             <h1 class="h1 z-30 text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold scale-150 text-center">The Serendipity Scheme</h1>
         </div>
         <div class="absolute z-30 left-1/2 -translate-x-1/2 h-1/6 w-full min-w-2000 clippy clippy-shadow stripes hidden md:block" id="nav">
             <div class="text-center h-full w-full flex items-center justify-center flex-wrap">
-                <a href="#mission" class="anchor h3 mr-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Our Mission</a><span class="select-none"> | </span>
-                <a href="#about" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">About Us</a><span class="select-none"> | </span>
-                <a href="/submission-guide" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Submit Your Work</a><span class="select-none"> | </span>
-                <a href="/p/random" class="anchor h3 text-ss-teal ml-2 hover:text-ss-teal/70 hover:rotate-2 hover:no-underline transition-all">View a Random Work</a>
+                <a href="#mission" class="anchor h3 mr-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">About</a><span class="select-none"> | </span>
+                <a href="/submission-guide" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Submit</a><span class="select-none"> | </span>
+                <a href="/browse" class="anchor h3 mx-2 text-slate-700 hover:text-black hover:rotate-2 hover:no-underline transition-all">Browse</a><span class="select-none"> | </span>
+                <a href="/p/random" class="anchor h3 text-ss-teal ml-2 hover:text-ss-teal/70 hover:rotate-2 hover:no-underline transition-all">Random</a>
             </div>
         </div>
         <div class="block md:hidden absolute z-30 left-1/2 -translate-x-1/2 -translate-y-20 h-56 min-h-52 w-full min-w-2000 clippy clippy-shadow stripes">
             <ul class="text-center h-full w-full flex flex-col items-center justify-center flex-wrap">
                 <li>
-                    <a href="#mission" class="anchor h3 mr-2">Our Mission</a>
+                    <a href="#mission" class="anchor h3 mr-2">About</a>
                 </li>
                 <li>
-                    <a href="#about" class="anchor h3 mx-2">About Us</a>
+                    <a href="/submission-guide" class="anchor h3 mx-2">Submit</a>
                 </li>
                 <li>
-                    <a href="/submission-guide" class="anchor h3 mx-2">Submit Your Work</a>
+                    <a href="/browse" class="anchor h3 mx-2">Browse</a>
                 </li>
                 <li>
-                    <a href="/p/random" class="anchor h3 text-ss-teal font-bold ml-2">View a Random Work</a>
+                    <a href="/p/random" class="anchor h3 text-ss-teal font-bold ml-2">Random</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +55,7 @@
             <div id="mission" class="w-full mb-8 relative left-1/2 -translate-x-1/2 z-40 text-slate-800">
                 <h2 class="h2 font-semibold ml-4 transition-all">Our <span class="text-ss-teal italic">Mission</span></h2>
                 <hr class="w-1/4 ml-6 my-4 text-slate-400" />
-                <p class="w-full md:w-1/2 ml-4 text-lg">
+                <p class="w-full md:w-1/2 ml-4 pr-8 text-lg">
                     <span class="italic md:hover:text-pink-600 transition-all">The Serendipity Scheme</span> was dreamed up to provide Whatcom County teens with an accessible, stress-free way to promote their creativity. By uploading their art and writing on our website and distributing QR codes linked to it, young artists and writers have the opportunity to engage with the broader community and receive recognition and support back from it. As creatives ourselves, we understand how daunting sharing your voice with the world can be, but we also know that the only way to gain confidence and improve our craft is by taking that first step out into the world! Our mission is to cultivate a simple, and serendipitous platform that highlights teen imagination, offers an inspiring surprise to anyone who stumbles upon us, and makes Whatcom County just a little bit brighter. 
                 </p>
             </div>
@@ -68,14 +70,14 @@
                             <h6 class="h6 italic text-slate-700">Director</h6>
                         </li>
                         <li>
-                            <p class="w-full md:w-1/2 text-lg">
+                            <p class="w-full md:w-1/2 text-lg pr-8">
                                 Hello there! My name is Ella Prichard and I'm the founder and director of The Serendipity Scheme. I'm a teen speculative fiction author who loves time travel stories, studying history, and caramel cake. I created The Serendipity Scheme as a way to help fellow creative teens bring their work to life, and to cultivate a greater presence of art and writing throughout Whatcom County. I'm so glad you stumbled upon us, and I hope you enjoy your stay! 
                                 <a class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple" href="mailto:ella@serendipityscheme.com">ella@serendipityscheme.com</a>
                             </p>
                         </li>
                     </ul>
                 </div>
-                <div class="flex my-6">
+                <div class="flex my-6 pb-4">
                     <img src="/img/maya.webp" alt="headshot of a person" class="w-20 h-20 rounded-full ml-6 border-ss-teal border-2 pointer-events-none" id="maya"/>
                     <ul class="ml-4 w-full">
                         <li>
@@ -83,28 +85,13 @@
                             <h6 class="h6 italic text-slate-700">Art Curator</h6>
                         </li>
                         <li>
-                            <p class="w-full md:w-1/2 text-lg">
+                            <p class="w-full md:w-1/2 text-lg pr-8">
                                 Hi, I’m Maya! I’m a teen artist who specializes in traditional art and I especially love watercolor and printmaking. My favorite thing about art is that it can turn your imagination into reality. You can follow my art journey <a href="https://instagram.com/lejingmun" target="_blank" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple">@lejingmun</a><br />
                                 I look forward to seeing your art :)
                             </p>
                         </li>
                     </ul>
                 </div>
-                <!-- <div class="flex">
-                    <img src="/img/robbie.webp" alt="headshot of a person" class="w-20 h-20 rounded-full ml-6 border-ss-teal border-2 pointer-events-none" id="robbie"/>
-                    <ul class="ml-4 w-full">
-                        <li>
-                            <a href="/img/vro.webp" target="_blank"><h4 class="h4 font-bold text-ss-teal">Robbie Henkel</h4></a>
-                        </li>
-                        <li>
-                            <p class="hidden">hey, you found the easter egg! good on ya. here, have some cake 🍰</p>
-                            <p class="w-full md:w-1/2 text-lg">
-                                Dream guest on my podcast? Whoever made the sure SM7-B.
-                                You can find me at <a href="https://rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple" target="_blank">https://rhenkel.me</a> or contact me at <a href="mailto:contact@rhenkel.me" class="underline hover:no-underline hover:text-ss-purple/60 text-ss-purple">contact@rhenkel.me</a>
-                            </p>
-                        </li>
-                    </ul>
-                </div> -->
             </div>
         </div>
     </div>
@@ -144,43 +131,40 @@
     #ella {
         filter: drop-shadow(-3px 3px 3px teal);
     }
-    /* #robbie {
-        filter: drop-shadow(3px 3px 3px teal);
-    } */
     #maya {
         filter: drop-shadow(0px 3px 3px teal);
     }
     .bubble-0 {
         /* transition: all 0.2s ease-out; */
-        transition: all 1s ease-out;
+        transition: all 1.2s ease-out;
         animation: bounce 4s ease-in-out infinite;
-        background-image: url("/img/wave-layer-0.svg");
+        background-image: url("/img/waves/0.svg");
     }
     .bubble-1 {
         /* transition: all 0.4s ease-out; */
-        transition: all 0.8s ease-out;
+        transition: all 1s ease-out;
         animation: bounce 5s ease-in-out infinite;
-        background-image: url("/img/wave-layer-1.svg");
+        background-image: url("/img/waves/1.svg");
     }
     .bubble-2 {
-        transition: all 0.6s ease-out;
+        transition: all 0.8s ease-out;
         animation: bounce 6s ease-in-out infinite;
-        background-image: url("/img/wave-layer-2.svg");
+        background-image: url("/img/waves/2.svg");
     }
     .bubble-3 {
         /* transition: all 0.8s ease-out; */
-        transition: all 0.4s ease-out;
+        transition: all 0.6s ease-out;
         animation: bounce 7s ease-in-out infinite;
-        background-image: url("/img/wave-layer-3.svg");
+        background-image: url("/img/waves/3.svg");
     }
     .bubble-4 {
         /* transition: all 1s ease-out; */
-        transition: all 0.2s ease-out;
+        transition: all 0.4s ease-out;
         animation: bounce 8s ease-in-out infinite;
-        background-image: url("/img/wave-layer-4.svg");
+        background-image: url("/img/waves/4.svg");
     }
     .starhue {
-        filter: brightness(0) saturate(100%) invert(14%) sepia(66%) saturate(4562%) hue-rotate(293deg) brightness(86%) contrast(89%);
+        filter: brightness(0%) saturate(100%) invert(14%) sepia(66%) saturate(4562%) hue-rotate(293deg) brightness(86%) contrast(89%);
     }
     @media(prefers-reduced-motion) {
         .panner {
@@ -212,12 +196,15 @@
     @keyframes heartbeater {
         0% {
             font-size: 1rem;
+            translate: 0rem 0rem;
         }
         50% {
             font-size: 1.25rem;
+            translate: -0.125rem 0rem;
         }
         100% {
             font-size: 1rem;
+            translate: 0rem 0rem;
         }
     }
     .heartbeat {
