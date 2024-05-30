@@ -16,7 +16,7 @@ export async function load({ params }) {
 		url: process.env.KV_REST_API_URL,
 		token: process.env.KV_REST_API_TOKEN
 	});
-	if (((await client.get(params.slug + ':published')) as boolean) == true) {
+	if ((await client.get(params.slug + ':published')) as boolean) {
 		let content: string | undefined | null = undefined;
 		switch (await client.get(params.slug + ':content-type')) {
 			case 'text':
