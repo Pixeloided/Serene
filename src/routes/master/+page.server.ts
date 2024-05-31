@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import { createClient } from '@vercel/kv';
 import { put } from '@vercel/blob';
 import { error, redirect } from '@sveltejs/kit';
 
@@ -14,6 +13,22 @@ export const actions = {
 		let id;
 		let exists: boolean | null = true;
 
+		function generateUUID() {
+			let res = '';
+			for (let i = 0; i < 48; i++) {
+				if (Math.random() < 0.33) {
+					res += String.fromCharCode(97 + Math.floor(Math.random() * 26)).toUpperCase();
+					continue;
+				}
+				if (Math.random() > 0.66) {
+					res += Math.floor(Math.random() * 10);
+					continue;
+				}
+				res += String.fromCharCode(97 + Math.floor(Math.random() * 26));
+			}
+			return res;
+		}
+
 		while (exists) {
 			id =
 				String.fromCharCode(97 + Math.floor(Math.random() * 26)) +
@@ -23,9 +38,9 @@ export const actions = {
 		}
 
 		// Set the data
-		await uploader.set(id + ':published', false);
+		await uploader.set(`content:${id}:published`, false);
 		for (const key of data.keys()) {
-			await uploader.set(id + ':' + key, data.get(key) as string);
+			await uploader.set(`content:${id}:${key}`, data.get(key) as string);
 		}
 
 		// Image content type exclusive - text content is automatically handled above.
@@ -35,11 +50,17 @@ export const actions = {
 				throw error(400, { message: 'No file provided to upload. Whoops!' });
 			}
 			const { downloadUrl } = await put(id as string, file, { access: 'public' });
-			await uploader.set(id + ':content', downloadUrl);
+			await uploader.set(`content:${id}:content`, downloadUrl);
 		}
 
-		await uploader.lpush('all', id);
+		const unpublishedContentKey = generateUUID();
 
-		return redirect(303, '/master/preview/' + id);
+		await uploader.set(`content:${id}:unpublished-key`, unpublishedContentKey, { ex: 86400 });
+		await uploader.set(`content:${id}:date`, new Date().toDateString());
+
+		await uploader.lpush('all', id);
+		await uploader.zadd('views', { member: id, score: 0 });
+
+		return redirect(303, `/master/p/${id}`);
 	}
 };

@@ -190,8 +190,7 @@
 		<input type="hidden" name="content" value={JSON.stringify(tiptapContents)} required={true} />
 	{/if}
 	<div class="mb-4 w-full text-center">
-		<button type="submit" class="btn mr-2 w-1/3 rounded-2xl bg-green-500">📋 Submit</button>
-		<button type="button" class="btn ml-2 w-1/3 rounded-2xl bg-blue-500">👁️ Preview</button>
+		<button type="submit" class="btn mr-2 w-full rounded-2xl bg-green-500">📋 Submit</button>
 	</div>
 </form>
 
