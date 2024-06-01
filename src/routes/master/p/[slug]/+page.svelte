@@ -13,6 +13,33 @@
 		if (sel === 'random') {
 			is_random = true;
 		}
+
+		const shareButton = document.querySelector('#share-priv');
+		shareButton?.addEventListener('click', () => {
+			navigator.share({
+				text: document.title + ':',
+				url: `https://serendipityscheme.com/p/${$page.data.slug}?key=${$page.data.key}`
+			});
+		});
+
+		const pubButton = document.querySelector('#pub');
+		pubButton?.addEventListener('click', async () => {
+			console.log('publishing..');
+			const response = await fetch(`/master/pub`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ slug: $page.data.slug })
+			});
+			const json = await response.json();
+			if (json.status === 'success') {
+				alert('Published!');
+				window.location.href = `/p/${$page.data.slug}`;
+			} else {
+				alert('Failed to publish.');
+			}
+		});
 	});
 </script>
 
@@ -20,7 +47,7 @@
 	<title>{$page.data.title} by {$page.data.author}</title>
 </svelte:head>
 <Header />
-<div class="mx-4 h-5/6 flex-col scroll-smooth">
+<div class="h-svh flex-col scroll-smooth">
 	<div class="relative mt-8 w-full md:left-1/2 md:w-1/2 md:-translate-x-1/2">
 		<div class="flex flex-row">
 			{#if is_random}
@@ -55,17 +82,26 @@
 			<div class="-mb-6" />
 		{/if}
 		<br />
-		{#if $page.data.content.split(' ').length > 200}
-			<ShareButton />
-		{/if}
-		<br />
 		{#if $page.data.content_type === 'text'}
-			<div class="mb-32">
-				<div>{@html $page.data.content}</div>
-			</div>
+			<div class="mb-4">{@html $page.data.content}</div>
 		{:else if $page.data.content_type === 'image'}
 			<img src={$page.data.content} alt={$page.data.title} class="pointer-events-none" />
 		{/if}
+		<div class="mt-4 flex justify-center">
+			<div
+				class="mx-8 rounded-full bg-ss-teal px-4 py-2 transition-all hover:scale-95 active:bg-green-400"
+				id="share-priv"
+			>
+				Copy Private Preview URL
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div
+				class="mx-8 rounded-full bg-ss-teal px-4 py-2 transition-all hover:scale-95 active:bg-green-400"
+				id="pub"
+			>
+				Publish Now
+			</div>
+		</div>
 	</div>
+	<Footer />
 </div>
-<Footer />

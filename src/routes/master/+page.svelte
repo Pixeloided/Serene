@@ -8,6 +8,7 @@
 	import Typography from '@tiptap/extension-typography';
 	import TextAlign from '@tiptap/extension-text-align';
 	import { enhance } from '$app/forms';
+	import Footer from '$lib/Footer.svelte';
 	// import type { PageData } from './$types';
 
 	// export let form;

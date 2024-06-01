@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Footer from '$lib/Footer.svelte';
 	import { onMount } from 'svelte';
 
 	let is_available: boolean = false;
@@ -197,43 +198,10 @@
 		</div>
 	</div>
 	<div class="my-2 h-1/6 md:hidden" />
-	<div class="stripes footer relative left-1/2 z-40 h-1/6 w-full -translate-x-1/2 text-slate-800">
-		<div class="flex h-full w-full flex-wrap items-center justify-center text-center">
-			<ul>
-				<li>
-					<p>© 2024 Respective Holders</p>
-				</li>
-				<li>
-					<a href="/legal/privacy" class="anchor hover:no-underline">Privacy Policy</a> |
-					<a href="/legal/tos" class="anchor hover:no-underline">Terms of Service</a>
-					|
-					<a
-						href="https://github.com/pixeloided/serene"
-						target="_blank"
-						class="anchor hover:no-underline">Source Code</a
-					>
-				</li>
-				<li>
-					<p>
-						Made with <span class="heartbeat absolute text-red-500">♥</span><span class="mx-2"
-						></span>by
-						<a href="https://rhenkel.me" class="anchor hover:no-underline" target="_blank"
-							>Robert Henkel</a
-						>. Reach out at
-						<a href="mailto:contact@rhenkel.me" class="anchor hover:no-underline"
-							>contact@rhenkel.me</a
-						>.
-					</p>
-				</li>
-			</ul>
-		</div>
-	</div>
 </div>
+<Footer />
 
 <style>
-	.footer {
-		box-shadow: inset 0rem 0.5rem 2rem 0.25rem rgb(0 0 0 / 40%);
-	}
 	#bubbles div {
 		filter: drop-shadow(3px 3px 5px black);
 	}
@@ -325,9 +293,6 @@
 			font-size: 1rem;
 			translate: 0rem 0rem;
 		}
-	}
-	.heartbeat {
-		animation: heartbeater 1s ease-in-out infinite;
 	}
 	.panner {
 		animation: panna_cotta 90s linear infinite;

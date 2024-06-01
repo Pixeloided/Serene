@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import { redirect } from '@sveltejs/kit';
-import { redis } from '$lib/redis';
+import { ensureOpen, redis } from '$lib/redis';
 // import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
+	await ensureOpen();
 	const params = url.searchParams;
-	await redis.lrange('all', 0, -1).then(async (res) => {
+	await redis.lRange('all', 0, -1).then(async (res) => {
 		if (params.get('excl') !== null) {
 			res.splice(res.indexOf(params.get('excl')!), 1);
 		}
