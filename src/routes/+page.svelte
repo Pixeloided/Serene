@@ -56,7 +56,8 @@
 				<a
 					href="/browse"
 					class="anchor h3 mx-2 text-slate-700 transition-all hover:rotate-2 hover:text-black hover:no-underline"
-					>Browse</a
+					data-sveltekit-preload-code="off"
+					data-sveltekit-preload-data="off">Browse</a
 				><span class="select-none"> | </span>
 				<a
 					href="/p/random"
@@ -161,7 +162,7 @@
 								stumbled upon us, and I hope you enjoy your stay!
 								<a
 									class="text-ss-purple underline hover:text-ss-purple/60 hover:no-underline"
-									href="mailto:ella@serendipityscheme.com">ella@serendipityscheme.com</a
+									href="mailto:ella@serendipityscheme.com">Ella@serendipityscheme.com</a
 								>
 							</p>
 						</li>

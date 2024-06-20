@@ -64,7 +64,7 @@
 				<div>{@html $page.data.content}</div>
 			</div>
 		{:else if $page.data.content_type === 'image'}
-			<img src={$page.data.content} alt={$page.data.title} class="pointer-events-none" />
+			<img src={$page.data.content} alt={$page.data.title} class="pointer-events-none mb-32" />
 		{/if}
 	</div>
 </div>

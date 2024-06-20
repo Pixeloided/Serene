@@ -3,7 +3,7 @@
 	<p class="">
 		<a href="/legal/privacy" class="hover:no-underline" target="_blank">Privacy Policy</a> |
 		<a href="/legal/tos" class="hover:no-underline" target="_blank">Terms of Service</a>
-		| <a href="https://github.com/pixeloided/serene" target="_blank">Source</a>
+		| <a href="https://github.com/pixeloided/serene" target="_blank">Source Code</a>
 	</p>
 	Made with&nbsp;<span class="heartbeat absolute text-red-500">♥</span><span class="mx-2"></span>by
 	<a href="https://rhenkel.me" class="anchor hover:no-underline" target="_blank">Robert Henkel</a>.

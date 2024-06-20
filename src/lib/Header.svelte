@@ -46,7 +46,8 @@
 	<a
 		href="/browse"
 		class="ml-4 block w-max p-2 pr-8 text-3xl font-semibold text-black no-underline transition-all hover:ml-6 hover:text-slate-700"
-		id="link">Browse</a
+		id="link"
+		data-sveltekit-preload-code="off">Browse</a
 	>
 	<hr class="hr ml-8 w-1/4 text-slate-500/50" />
 	<a

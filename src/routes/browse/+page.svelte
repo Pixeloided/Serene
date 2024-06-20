@@ -30,27 +30,27 @@
 				<option value="all" selected={params?.get('f') == 'all'}>All</option>
 				<option
 					value="art"
-					disabled={$page.data.available_filters.art}
+					disabled={!$page.data.available_filters?.art}
 					selected={params?.get('f') == 'art'}>Art</option
 				>
 				<option
 					value="poetry"
-					disabled={$page.data.available_filters.poetry}
+					disabled={!$page.data.available_filters?.poetry}
 					selected={params?.get('f') == 'poetry'}>Poetry</option
 				>
 				<option
 					value="prose"
-					disabled={$page.data.available_filters.prose}
+					disabled={!$page.data.available_filters?.prose}
 					selected={params?.get('f') == 'prose'}>Prose</option
 				>
 				<option
 					value="community-partner"
-					disabled={$page.data.available_filters.community}
-					selected={params?.get('f') == 'community-partners'}>Community Partners</option
+					disabled={!$page.data.available_filters?.community}
+					selected={params?.get('f') == 'community-partner'}>Community Partners</option
 				>
 			</select>
 		</div>
-		<ul>
+		<ul class="pb-36">
 			<hr class="hr text-slate-500/50" />
 			{#each $page.data.posts as item}
 				<li class="mt-4">

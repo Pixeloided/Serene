@@ -1,6 +1,8 @@
 import { ensureOpen, redis } from '$lib/redis';
 import type { PageServerLoad } from './$types';
 
+export const ssr = false;
+
 export const load = (async ({ url }) => {
 	await ensureOpen();
 	const params = url.searchParams;
@@ -23,25 +25,6 @@ export const load = (async ({ url }) => {
 
 	for (let i = 0; i < length; i++) {
 		if ((await redis.get(`content:${list_slugs[i]}:published`)) != 'true') return;
-		switch (params.get('f')) {
-			case 'prose':
-				if ((await redis.get(`content:${list_slugs[i]}:content-classifier`)) != 'prose') return;
-				break;
-			case 'art':
-				if ((await redis.get(`content:${list_slugs[i]}:content-classifier`)) != 'art') return;
-				break;
-			case 'poetry':
-				if ((await redis.get(`content:${list_slugs[i]}:content-classifier`)) != 'poetry') return;
-				break;
-			case 'community-partner':
-				if (
-					(await redis.get(`content:${list_slugs[i]}:content-classifier`)) != 'community-partners'
-				)
-					return;
-				break;
-			default:
-				break;
-		}
 		const classifier = await redis.get(`content:${list_slugs[i]}:content-classifier`);
 		switch (classifier) {
 			case 'prose':
@@ -59,6 +42,23 @@ export const load = (async ({ url }) => {
 			default:
 				break;
 		}
+		switch (params.get('f')) {
+			case 'prose':
+				if (classifier != 'prose') continue;
+				break;
+			case 'art':
+				if (classifier != 'art') continue;
+				break;
+			case 'poetry':
+				if (classifier != 'poetry') continue;
+				break;
+			case 'community-partner':
+				if (classifier != 'community-partners') continue;
+				break;
+			default:
+				break;
+		}
+
 		list.push({
 			slug: list_slugs[i],
 			date: await redis.get(`content:${list_slugs[i]}:date`),
